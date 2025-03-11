@@ -113,5 +113,18 @@ video{
 
 #container-project{
     height: 100vh;
-    background-color: #0B5A7C;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#slides{
+    display: flex;
+
+    overflow: hidden;
+}
+
+#container-project #container-slides #slides img{
+    width: 500px;
 }
