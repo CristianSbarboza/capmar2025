@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 header{
     display: flex;
     justify-content: space-between;
@@ -141,9 +145,9 @@ video{
 /* Projetos */
 
 #container-project{
- height: 100vh;
- width: 100vw;
-overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 
 }
 
@@ -226,6 +230,7 @@ overflow: hidden;
     width: 135px;
     height: 200px;
     position: relative;
+    z-index: 3;
 }
 
 #container-project .thumb .thumb-item img{
@@ -307,8 +312,8 @@ overflow: hidden;
 
 }
 
-#title-form{
-   
+#title-form h2{
+   font-size: 30px;
 }
 
 #container-form{
@@ -343,13 +348,24 @@ input{
    
 }
 
-#input-name, #input-email, #input-number{
+#input-name, #input-email, #container-input-coment{
     width: 70%; 
 }
 
-#input-name input, #input-email input, #input-number input{
+#input-name input, #input-email input{
     padding: 10px;
     width: 100%;
+}
+
+#input-coment{
+    height: 100px;
+    width: 100%;
+
+    border-radius: 10px;
+    border: none;
+
+    resize: none;
+    padding: 10px;
 }
 
 input[type="submit"] {
@@ -361,11 +377,48 @@ input[type="submit"] {
     font-size: 16px;
 }
 
+#input-submit:hover{
+    opacity: 0.8;
+    transition: ease-in-out 0.4s;
+}
+
+/* social */
+
 
 #social{
     width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+
 }
 
+#container-bob{
+    width: 250px;
+    height: 250px;
+    background-color: #091F3D;
+
+    border-radius: 100%;
+    margin-top: 20px;
+    
+}
+
+#container-bob img{
+    position: relative;
+    top: -25%;
+    right: 20%;
+    
+    
+}
+
+#text-contact{
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+}
 
 
 
@@ -373,8 +426,126 @@ input[type="submit"] {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    gap: 40px;
 }
+
+#container-logo-social a:hover {
+    transform: scale(1.2)
+}
+
+
 #container-logo-social img{
     width: 50px;
+
+}
+
+#container-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    padding: 10px;
+}
+
+footer{
+    color: #eee;
+}
+
+
+/* Animacao thumb */
+
+#container-project.next .thumb{
+    animation: effectNextThumb 0.5s linear 1 forwards;
+}
+
+
+@keyframes effectNextThumb {
+    from{
+        transform: translateX(150px);
+    }
+}
+
+
+#container-project.next .thumb .thumb-item:nth-last-child(1){
+    animation: effectLastThumb 0.5s linear 1 forwards;
+}
+
+
+@keyframes effectLastThumb {
+    from{
+        width: 0;
+        opacity: 0;
+    }
+}
+
+
+#container-project .list .list-item:nth-last-child(1) .content .title,#container-project .list .list-item:nth-last-child(1) .content .description-project, #container-project .list .list-item:nth-last-child(1) .content .btn{
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent 0.5s 0.1s linear 1 forwards;
+}
+
+@keyframes showContent {
+    to{
+        transform: translateY(0);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+#container-project .list .list-item:nth-last-child(1) .content .title{
+    animation-delay: 0.3s;
+}
+
+#container-project .list .list-item:nth-last-child(1) .content .description-project{
+    animation-delay: 0.5s;
+}
+
+#container-project .list .list-item:nth-last-child(1) .content .btn{
+    animation-delay: 1s;
+}
+
+
+#container-project.next .list .list-item:nth-last-child(1) img{
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 30px;
+    animation:  showMainImage 0.5s linear forwards;
+
+}
+
+@keyframes showMainImage {
+    to {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+#container-project.back .list .list-item:nth-child(1) img{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: hideMainImage 0.5s linear 1 forwards;
+    z-index: 2;
+}
+
+
+@keyframes hideMainImage {
+    to{
+        width: 135px;
+        height: 200px;
+        border-radius: 10px;
+        left: 61%;
+        bottom: 32px;
+        opacity: 0;
+    }
 
 }
